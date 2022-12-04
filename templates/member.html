@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='member.css') }}">
+    <script src="{{ url_for('static', filename='member.js') }}"></script>
+
+    <title>會員頁</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div>歡迎光臨，這是會員頁</div>
+            {{username}}，歡迎登入系統<br>
+            <a href="/signout">登出系統</a>
+        </div>
+        <div class="content">
+            <form action="/message" method="post">
+                <div>快來留言吧</div>
+                內容<input type="text" name="message"><br>
+                <button>送出</button>
+            </form>
+        </div>
+        <div class="content">
+            <div>留言區<br>
+                {{message|safe}}
+            </div>
+        </div>
+        <div class="content">
+            查詢會員姓名<br>
+            <input type="text" name="username" id="username">
+            <button onclick="lookup()">查詢</button><br>
+            <span id="memberName"></span>
+        </div>
+        <div class="content" style="border : solid;">
+            更新我的姓名<br>
+            <input type="text" name="newName" id="rename">
+            <button onclick="update()">更新</button><br>
+            <span id="updateStatus"></span>
+        </div>
+    </div>
+</body>
+</html>
